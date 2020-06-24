@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from os import remove
 from time import time, sleep
 
-USE_GNUPLOT = False  # change to False to deactivate gnuplot wrapper (then the Gnuplot library is unnecessary)
+USE_GNUPLOT = True  # change to False to deactivate gnuplot wrapper (then the Gnuplot library is unnecessary)
 
 if __name__ == "__main__":
     parser = ArgumentParser(description='Implementation of Markov Decision Problem'
