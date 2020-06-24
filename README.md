@@ -4,7 +4,7 @@ Implementation of Markov Decision Process using grid-world enironment
 ## Usage
 Require arguments:<br>
 <b>File with world description </b> (eg. world0.txt)<br>
-File <b> world0.txt is equivalent to well-known MDP problem using grid world (eg. here: http://aima.cs.berkeley.edu/). 
+File <b> world0.txt</b> is equivalent to well-known MDP problem using grid world (eg. here: http://aima.cs.berkeley.edu/). 
 <br>
 Optional arguments: <br>
 <b>-mdp</b> -> Run the Markov Decision Problem algorithm and print the result as standard output <br>
