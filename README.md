@@ -35,5 +35,5 @@ If you don't want to just Gnuplot, then just change the <b>USE_GNUPLOT</b> flag 
 
 ## World file structure
 The world must be created using the following symbols in .txt file:
-
+![obraz](https://user-images.githubusercontent.com/44849247/85588710-3830ae80-b643-11ea-9804-a712a75668ef.png)
 
