@@ -32,3 +32,8 @@ python main.py world0.txt -mdp -sh -s -sfn figures
 This code use gnuplot library to print the utilities for every iteration. Using gruplot require additional software. Here is the description: https://pypi.org/project/PyGnuplot/
 <br>
 If you don't want to just Gnuplot, then just change the <b>USE_GNUPLOT</b> flag in main.py to <b>False</b>
+
+## World file structure
+The world must be created using the following symbols in .txt file:
+
+
