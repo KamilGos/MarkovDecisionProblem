@@ -80,6 +80,10 @@ $ python main.py data/world1.txt -mdp -sh -s -sfn figures
 ```
 
 
+https://user-images.githubusercontent.com/44849247/143018839-6c836993-34f9-47d8-bd5f-abe0e88ba379.mp4
+
+
+
 ## :eyes: Implementation ##
 <h2>Grid World</h2>
 Inside 'data' folder you can find three prepared, ready world. Hovever you can create your own world using the following file structure:
