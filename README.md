@@ -31,7 +31,7 @@
 
 <center>
 
-You can  find implementation of Q-Learning algorithm (reinforcement learning) using grid-world environment here: [github.com/KamilGos/qlearning-grid-world](https://github.com/KamilGos/qlearning-grid-world)
+You can find the implementation of Q-Learning algorithm (reinforcement learning) using grid-world environment here: [github.com/KamilGos/qlearning-grid-world](https://github.com/KamilGos/qlearning-grid-world)
 
 </center>
 
