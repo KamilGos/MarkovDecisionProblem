@@ -1,4 +1,3 @@
-# Kamil Goś 235184
 import numpy as np
 import matplotlib.pyplot as plt
 import random
@@ -68,7 +67,7 @@ class World:
         self.translateToIndexes()
 
     def showWorldValues(self):
-        print("============ WORLD INFOS ==============")
+        print("============ WORLD INFO ==============")
         print("World size: ", self.nRows, " x ", self.nCols)
         print("Start: ", self.start, "  Index: ", self.stateStartIndex)
         print("Probabilities: ", self.prob)
@@ -225,15 +224,15 @@ class World:
             for j in range(self.nRows, 0, -1):
                 if type == "mdp":
                     if iter + 1 not in self.stateForbiddenIndexes:
-                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 4)), fontsize=20,
+                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 2)), fontsize=17,
                                  horizontalalignment='center', verticalalignment='center')
                         plt.title('Markov Decision Problem. Utilities', size=16)
                 elif type == "q":
                     if iter + 1 in self.stateForbiddenIndexes:
-                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 4)), fontsize=20,
+                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 2)), fontsize=17,
                                  horizontalalignment='center', verticalalignment='center', color='white')
                     else:
-                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 4)), fontsize=20,
+                        plt.text(i + 0.5, j - 0.5, str(round(utilities[iter], 2)), fontsize=17,
                                  horizontalalignment='center', verticalalignment='center')
                     plt.title('Q-learning. Utilities', size=16)
 
@@ -278,7 +277,6 @@ class World:
             policy = (np.kron(np.ones((1, nActions)), policy) == mat)
         index_policy = [item - 1 for item in range(1, self.nStates + 1) if item not in (self.stateForbiddenIndexes + self.stateTerminalsIndexes)]
         mask = policy.astype("int64") * mat
-        print(mask.shape)
         mask = mask.reshape(self.nRows, self.nCols, 4)
         X3 = X2.reshape(self.nRows, self.nCols, nActions)
         Y3 = Y2.reshape(self.nRows, self.nCols, nActions)

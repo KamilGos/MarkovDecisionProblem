@@ -1,11 +1,7 @@
-from Gnuplot_wrapper import Gnuplot
-from MDP import MarkovDecisionProblem
-from World import World
+from sources.markov import MarkovDecisionProcess
+from sources.world import World
 from argparse import ArgumentParser
-from os import remove
-from time import time, sleep
-
-USE_GNUPLOT = True  # change to False to deactivate gnuplot wrapper (then the Gnuplot library is unnecessary)
+from time import time
 
 if __name__ == "__main__":
     parser = ArgumentParser(description='Implementation of Markov Decision Problem'
@@ -27,7 +23,6 @@ if __name__ == "__main__":
     print("Figures filename: ", args.save_filename)
     print("***************************************")
 
-    #############################################################################################################  EXECUTION
 
     if args.mrun is False:
         print("ERROR: At least [-mdp] option have to be use to execute this program!")
@@ -35,38 +30,26 @@ if __name__ == "__main__":
         world = World()
         world.readFile(str(args.world_filename))
         world.showWorldValues()
-        gnuplot = Gnuplot(world)
 
         if args.mrun:
-            markov = MarkovDecisionProblem(world)
-            print("\n\n######## Markov Decision Problem ########")
+            markov = MarkovDecisionProcess(world)
+            print("\n\n ## Markov Decision Process ##")
             start_time = time()
-            utilities, policy, iter = markov.value_iteration(gnuplot)
+            utilities, policy, iter = markov.value_iteration()
             elapsed_time = time() - start_time
             print("Number of iteration: ", iter)
             print("Algorithm execution time: ", round(elapsed_time, 2), " s")
             print("\n ++ Utilities and Policy ++")
             world.plotUtilitiesActionText(utilities, policy)
             if args.show is True and args.save is False:
-                if USE_GNUPLOT is True:
-                    tmp_filename = "tmp" + str(int(time()))
-                    gnuplot.saveDataToDat(tmp_filename)
-                    gnuplot.plotDataDat(tmp_filename, iter)
-                    sleep(1)
-                    remove((tmp_filename + ".dat"))
                 util_plot = world.plotUtilities(utilities, "mdp")
                 policy_plot = world.plotPolicy(policy, "mdp")
                 policy_plot.show()
 
             if args.save is True:
-                if USE_GNUPLOT is True:
-                    gnuplot.saveDataToDat(str(args.save_filename))
-                    gnuplot.generateGnuplotPlotFile(str(args.save_filename), iter)
                 util_plot = world.plotUtilities(utilities, "mdp")
                 world.saveUtilitiesPlot(util_plot, str(args.save_filename), "mdp")
                 policy_plot = world.plotPolicy(policy, "mdp")
                 world.savePolicyPlot(policy_plot, str(args.save_filename), "mdp")
                 if args.show is True:
-                    if USE_GNUPLOT is True:
-                        gnuplot.plotDataPlot(str(args.save_filename))
                     policy_plot.show()

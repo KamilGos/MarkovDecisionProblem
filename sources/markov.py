@@ -2,7 +2,7 @@ import numpy as np
 import copy
 
 
-class MarkovDecisionProblem:
+class MarkovDecisionProcess:
     def __init__(self, World):
         self.world = World
 
@@ -92,7 +92,7 @@ class MarkovDecisionProblem:
                 maxi = maxs[key]
         return maxi, action_map[max_a]
 
-    def value_iteration(self, gnuplot):
+    def value_iteration(self):
         theta = 0.0001
         delta = theta + 1
         iter = 0
@@ -107,5 +107,4 @@ class MarkovDecisionProblem:
             for state in range(1, self.world.nStates + 1):
                 V_new[state - 1], P[state - 1] = self.state_action_value_function(state, V_old)
                 delta = max(delta, np.abs(V_old[state - 1] - V_new[state - 1]))
-                gnuplot.addValue(state - 1, round(V_new[state - 1], 4))
         return V_new, P, iter
